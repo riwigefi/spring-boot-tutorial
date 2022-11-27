@@ -20,12 +20,35 @@ public class Book {
     private String title;
     private String isbn;
 
-    // On the target side,we only have to provide the name of the field name,which maps the relationship
+    // On the target side,we only have to provide the name of the field name,
+    // which maps the relationship
     // `CascadeType.ALL` propagates all operation
-    // including Hibernate-specific ones
-    // from a parent to a child entity
+    // including Hibernate-specific ones from a parent to a child entity
     @ManyToMany(mappedBy = "books", cascade = CascadeType.ALL)
     private Set<Author> authors = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(
+            name = "publisher_id",
+            nullable = false
+    )
+    private Publisher publisher;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     public Book() {
     }

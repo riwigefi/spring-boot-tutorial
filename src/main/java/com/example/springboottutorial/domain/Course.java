@@ -13,9 +13,11 @@ public class Course {
     Long id;
 
     // On the Student Class, many-to-many field name is "likedCourses"
-    // So on the Course Class,we only have to provide the name of the field,which maps the relationship
+    // So on the Course Class,
+    // we only have to provide the name of the field,which maps the relationship
 
-    // Keep in mind that since "a many-to-many relationship doesn't have an owner side in the database",
+    // Keep in mind that since
+    // "a many-to-many relationship doesn't have an owner side in the database",
     // we could configure the join table in the Course class and reference it from the Student class.
     @ManyToMany(mappedBy = "likedCourses")
     Set<Student> likes;
@@ -28,5 +30,6 @@ public class Course {
     @OneToMany(mappedBy = "student")
     Set<CourseRegistration> registrations;
 
-    // Note that there's an alternative way to use composite keys: the `@IdClass` annotation
+    // Note that there's an alternative way to use composite keys:
+    // the `@IdClass` annotation
 }
